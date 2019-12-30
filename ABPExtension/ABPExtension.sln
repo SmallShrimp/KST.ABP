@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KST.ABP.SignalR", "KST.ABP.SignalR\KST.ABP.SignalR.csproj", "{FBB4BBAD-A052-4C25-B191-A3CF45D246EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBB4BBAD-A052-4C25-B191-A3CF45D246EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB4BBAD-A052-4C25-B191-A3CF45D246EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB4BBAD-A052-4C25-B191-A3CF45D246EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB4BBAD-A052-4C25-B191-A3CF45D246EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90408926-BC1B-41A5-9C6F-F28D7D219A50}
+	EndGlobalSection
+EndGlobal
