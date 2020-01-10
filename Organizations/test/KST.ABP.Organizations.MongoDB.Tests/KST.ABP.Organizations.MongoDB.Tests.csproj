@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>KST.ABP.Organizations</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
+    <PackageReference Include="Mongo2Go" Version="2.2.12" />
+    <ProjectReference Include="..\..\src\KST.ABP.Organizations.MongoDB\KST.ABP.Organizations.MongoDB.csproj" />
+    <ProjectReference Include="..\KST.ABP.Organizations.TestBase\KST.ABP.Organizations.TestBase.csproj" />
+  </ItemGroup>
+
+</Project>

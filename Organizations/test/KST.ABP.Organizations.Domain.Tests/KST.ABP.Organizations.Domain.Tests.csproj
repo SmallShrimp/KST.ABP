@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>KST.ABP.Organizations</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
+    <ProjectReference Include="..\KST.ABP.Organizations.EntityFrameworkCore.Tests\KST.ABP.Organizations.EntityFrameworkCore.Tests.csproj" />
+  </ItemGroup>
+
+</Project>
