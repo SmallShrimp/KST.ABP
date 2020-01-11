@@ -15,25 +15,6 @@ namespace KST.ABP.Organizations
 
         public virtual Guid? TenantId { get; set; }
 
-        /// <summary>
-        /// 属性<see cref="DisplayName"/>的最大长度
-        /// </summary>
-        public const int MaxDisplayNameLength = 128;
-
-        /// <summary>
-        /// UO层次结构的最大深度。
-        /// </summary>
-        public const int MaxDepth = 16;
-
-        /// <summary>
-        /// Length of a code unit between dots.
-        /// </summary>
-        public const int CodeUnitLength = 5;
-
-        /// <summary>
-        /// Maximum length of the <see cref="Code"/> property.
-        /// </summary>
-        public const int MaxCodeLength = MaxDepth * (CodeUnitLength + 1) - 1;
 
 
         /// <summary>
@@ -42,6 +23,8 @@ namespace KST.ABP.Organizations
         /// </summary>
         public virtual Guid? ParentId { get; set; }
 
+        public virtual OrganizationUnit Parent { get; set; }
+
         /// <summary>
         /// 该组织单元的层次代码
         /// Example: "00001.00042.00005".
@@ -49,14 +32,14 @@ namespace KST.ABP.Organizations
         /// It's changeable if OU hierarch is changed.
         /// </summary>
         [Required]
-        [StringLength(MaxCodeLength)]
+        [StringLength(OrganizationUnitOptions.MaxCodeLength)]
         public virtual string Code { get; set; }
 
         /// <summary>
         /// Display name of this role.
         /// </summary>
         [Required]
-        [StringLength(MaxDisplayNameLength)]
+        [StringLength(OrganizationUnitOptions.MaxDisplayNameLength)]
         public virtual string DisplayName { get; set; }
 
         public virtual ICollection<OrganizationUnit> Children { get; set; }
@@ -80,7 +63,7 @@ namespace KST.ABP.Organizations
                 return null;
             }
 
-            return numbers.Select(number => number.ToString(new string('0', CodeUnitLength))).JoinAsString(".");
+            return numbers.Select(number => number.ToString(new string('0', OrganizationUnitOptions.CodeUnitLength))).JoinAsString(".");
         }
 
         /// <summary>

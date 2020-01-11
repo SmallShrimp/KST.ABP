@@ -17,6 +17,7 @@ namespace KST.ABP.Organizations.MongoDB
                 /* Add custom repositories here. Example:
                  * options.AddRepository<Question, MongoQuestionRepository>();
                  */
+                options.AddDefaultRepositories(true);
             });
         }
     }
