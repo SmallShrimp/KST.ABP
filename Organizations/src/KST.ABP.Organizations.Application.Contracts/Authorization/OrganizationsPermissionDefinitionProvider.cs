@@ -8,7 +8,9 @@ namespace KST.ABP.Organizations.Authorization
     {
         public override void Define(IPermissionDefinitionContext context)
         {
-            //var moduleGroup = context.AddGroup(OrganizationsPermissions.GroupName, L("Permission:Organizations"));
+            var moduleGroup = context.AddGroup(OrganizationsPermissions.GroupName, L("Permission:OrganizationUnits"));
+            moduleGroup.AddPermission(OrganizationsPermissions.ManageOrganizationTree, L("Permission:OrganizationUnits:ManageOrganizationTree"));
+            moduleGroup.AddPermission(OrganizationsPermissions.ManageMembers, L("Permission:OrganizationUnits:ManageMembers"));
         }
 
         private static LocalizableString L(string name)

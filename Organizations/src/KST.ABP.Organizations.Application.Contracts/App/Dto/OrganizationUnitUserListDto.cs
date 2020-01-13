@@ -15,8 +15,6 @@ namespace KST.ABP.Organizations.Dto
 
         public string EmailAddress { get; set; }
 
-         
-
         public DateTime AddedTime { get; set; }
     }
 }

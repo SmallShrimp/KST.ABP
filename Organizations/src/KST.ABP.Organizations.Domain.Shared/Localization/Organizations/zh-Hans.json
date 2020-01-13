@@ -1,0 +1,9 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "Permission:OrganizationUnits": "组织单元",
+    "Permission:OrganizationUnits:ManageOrganizationTree": "组织结构管理",
+    "Permission:OrganizationUnits:ManageMembers": "组织成员管理",
+    "OrganizationUnitDuplicateDisplayNameWarning": "显示名称不能重复"
+  }
+}

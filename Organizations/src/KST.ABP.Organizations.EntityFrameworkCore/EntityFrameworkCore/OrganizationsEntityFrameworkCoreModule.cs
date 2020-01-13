@@ -1,13 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
 namespace KST.ABP.Organizations.EntityFrameworkCore
 {
     [DependsOn(
         typeof(OrganizationsDomainModule),
-        typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpEntityFrameworkCoreModule)
     )]
     public class OrganizationsEntityFrameworkCoreModule : AbpModule

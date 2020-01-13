@@ -51,6 +51,20 @@ namespace KST.ABP.Organizations
             ParentId = parentId;
         }
 
+        public OrganizationUnit(Guid id, Guid? tenantId, string displayName, Guid? parentId)
+            : base(id)
+
+        {
+            TenantId = tenantId;
+            DisplayName = displayName;
+            ParentId = parentId;
+        }
+
+        public OrganizationUnit(Guid id) : base(id)
+        {
+
+        }
+
         /// <summary>
         /// Example: if numbers are 4,2 then returns "00004.00002";
         /// </summary>

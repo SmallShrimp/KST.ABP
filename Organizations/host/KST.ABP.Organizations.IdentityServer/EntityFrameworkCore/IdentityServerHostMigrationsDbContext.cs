@@ -24,9 +24,10 @@ namespace KST.ABP.Organizations.EntityFrameworkCore
             modelBuilder.ConfigurePermissionManagement();
             modelBuilder.ConfigureSettingManagement();
             modelBuilder.ConfigureAuditLogging();
-            //modelBuilder.ConfigureIdentity();
+            modelBuilder.ConfigureIdentity();
             modelBuilder.ConfigureIdentityServer();
             modelBuilder.ConfigureTenantManagement();
+            modelBuilder.ConfigureOrganizations();
         }
     }
 }

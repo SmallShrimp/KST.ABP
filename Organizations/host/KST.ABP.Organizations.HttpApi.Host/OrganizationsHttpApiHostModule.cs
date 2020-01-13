@@ -25,6 +25,7 @@ using Volo.Abp.MultiTenancy;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.AspNetCore.Mvc;
 
 namespace KST.ABP.Organizations
 {
@@ -130,6 +131,12 @@ namespace KST.ABP.Organizations
                         .AllowCredentials();
                 });
             });
+
+            Configure<AbpAspNetCoreMvcOptions>(options =>
+            {
+                options.ConventionalControllers.Create(typeof(OrganizationsApplicationModule).Assembly);
+            });
+
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

@@ -13,20 +13,18 @@ namespace KST.ABP.Organizations
     {
         Task<ListResultDto<OrganizationUnitDto>> GetOrganizationUnits();
 
-        Task<PagedResultDto<OrganizationUnitUserListDto>> GetOrganizationUnitUsers(GetOrganizationUnitUsersInput input);
-
         Task<OrganizationUnitDto> CreateOrganizationUnit(CreateOrganizationUnitInput input);
 
         Task<OrganizationUnitDto> UpdateOrganizationUnit(UpdateOrganizationUnitInput input);
 
         Task<OrganizationUnitDto> MoveOrganizationUnit(MoveOrganizationUnitInput input);
 
-        Task DeleteOrganizationUnit(EntityDto<Guid> input);
+        Task DeleteOrganizationUnit(Guid id);
 
         Task RemoveUserFromOrganizationUnit(UserToOrganizationUnitInput input);
 
         Task AddUsersToOrganizationUnit(UsersToOrganizationUnitInput input);
 
-        Task<PagedResultDto<NameValue>> FindUsers(FindOrganizationUnitUsersInput input);
+        Task<PagedResultDto<Guid>> FindUsers(FindOrganizationUnitUsersInput input);
     }
 }

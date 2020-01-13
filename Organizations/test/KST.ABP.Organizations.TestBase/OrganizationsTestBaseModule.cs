@@ -35,8 +35,15 @@ namespace KST.ABP.Organizations
                     await scope.ServiceProvider
                         .GetRequiredService<IDataSeeder>()
                         .SeedAsync();
+                    scope.ServiceProvider
+                       .GetRequiredService<OrganizationUnitTestDataBuilder>()
+                       .Build();
+
                 }
             });
+
+
+
         }
     }
 }

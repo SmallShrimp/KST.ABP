@@ -16,4 +16,8 @@
     <Content Remove="Localization\Organizations\*.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Localization\Organizations\zh-Hans.json" />
+  </ItemGroup>
+
 </Project>

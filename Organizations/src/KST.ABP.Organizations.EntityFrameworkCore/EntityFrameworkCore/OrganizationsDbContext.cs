@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Identity.EntityFrameworkCore;
 
 namespace KST.ABP.Organizations.EntityFrameworkCore
 {
@@ -28,7 +27,7 @@ namespace KST.ABP.Organizations.EntityFrameworkCore
         {
             base.OnModelCreating(builder);
 
-            builder.ConfigureIdentity();
+            
             builder.ConfigureOrganizations();
         }
     }

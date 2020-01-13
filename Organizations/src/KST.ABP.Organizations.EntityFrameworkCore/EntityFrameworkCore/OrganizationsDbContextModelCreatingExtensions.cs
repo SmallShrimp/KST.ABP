@@ -11,6 +11,7 @@ namespace KST.ABP.Organizations.EntityFrameworkCore
             this ModelBuilder builder,
             Action<OrganizationsModelBuilderConfigurationOptions> optionsAction = null)
         {
+
             Check.NotNull(builder, nameof(builder));
 
             var options = new OrganizationsModelBuilderConfigurationOptions(
