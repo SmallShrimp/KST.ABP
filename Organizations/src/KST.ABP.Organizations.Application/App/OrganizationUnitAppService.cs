@@ -33,7 +33,7 @@ namespace KST.ABP.Organizations
             AsyncQueryableExecuter = DefaultAsyncQueryableExecuter.Instance;
         }
 
-        public async Task<ListResultDto<OrganizationUnitDto>> GetOrganizationUnits()
+        public virtual async Task<ListResultDto<OrganizationUnitDto>> GetOrganizationUnits()
         {
             var query =
                 from ou in _organizationUnitRepository
@@ -55,7 +55,7 @@ namespace KST.ABP.Organizations
 
 
         [Authorize(OrganizationsPermissions.ManageOrganizationTree)]
-        public async Task<OrganizationUnitDto> CreateOrganizationUnit(CreateOrganizationUnitInput input)
+        public virtual async Task<OrganizationUnitDto> CreateOrganizationUnit(CreateOrganizationUnitInput input)
         {
             var organizationUnit = new OrganizationUnit(CurrentTenant.Id, input.DisplayName, input.ParentId);
             organizationUnit.CreatorId = CurrentUser.Id;
@@ -66,7 +66,7 @@ namespace KST.ABP.Organizations
         }
 
         [Authorize(OrganizationsPermissions.ManageOrganizationTree)]
-        public async Task<OrganizationUnitDto> UpdateOrganizationUnit(UpdateOrganizationUnitInput input)
+        public virtual async Task<OrganizationUnitDto> UpdateOrganizationUnit(UpdateOrganizationUnitInput input)
         {
             var organizationUnit = await _organizationUnitRepository.GetAsync(input.Id);
 
@@ -78,7 +78,7 @@ namespace KST.ABP.Organizations
         }
 
         [Authorize(OrganizationsPermissions.ManageOrganizationTree)]
-        public async Task<OrganizationUnitDto> MoveOrganizationUnit(MoveOrganizationUnitInput input)
+        public virtual async Task<OrganizationUnitDto> MoveOrganizationUnit(MoveOrganizationUnitInput input)
         {
             await _organizationUnitManager.MoveAsync(input.Id, input.NewParentId);
 
@@ -88,14 +88,14 @@ namespace KST.ABP.Organizations
         }
 
         [Authorize(OrganizationsPermissions.ManageOrganizationTree)]
-        public async Task DeleteOrganizationUnit(Guid id)
+        public virtual async Task DeleteOrganizationUnit(Guid id)
         {
             await _organizationUnitManager.DeleteAsync(id);
         }
 
 
         [Authorize(OrganizationsPermissions.ManageMembers)]
-        public async Task RemoveUserFromOrganizationUnit(UserToOrganizationUnitInput input)
+        public virtual async Task RemoveUserFromOrganizationUnit(UserToOrganizationUnitInput input)
         {
             await _userOrganizationUnitRepository.DeleteAsync(m => m.UserId == input.UserId && m.OrganizationUnitId == input.OrganizationUnitId);
         }
@@ -110,7 +110,7 @@ namespace KST.ABP.Organizations
         }
 
         [Authorize(OrganizationsPermissions.ManageMembers)]
-        public async Task<PagedResultDto<Guid>> FindUsers(FindOrganizationUnitUsersInput input)
+        public virtual async Task<PagedResultDto<Guid>> FindUsers(FindOrganizationUnitUsersInput input)
         {
             var userIdsInOrganizationUnit = _userOrganizationUnitRepository.AsQueryable()
                 .Where(uou => uou.OrganizationUnitId == input.OrganizationUnitId)

@@ -2,7 +2,7 @@
 {
     public static class OrganizationsDbProperties
     {
-        public static string DbTablePrefix { get; set; } = "Organizations";
+        public static string DbTablePrefix { get; set; } = "KST";
 
         public static string DbSchema { get; set; } = null;
 
