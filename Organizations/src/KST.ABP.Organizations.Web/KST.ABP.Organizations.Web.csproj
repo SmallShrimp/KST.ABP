@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>KST.ABP.Organizations.Web</RootNamespace>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.1.2.3</Version>
+    <Version>1.1.2</Version>
     <Authors>Xugege</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>

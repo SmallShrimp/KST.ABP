@@ -6,7 +6,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>KST.ABP.Organizations</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.2.3</Version>
+    <Version>1.1.2</Version>
     <Authors>Xugege</Authors>
   </PropertyGroup>
 
