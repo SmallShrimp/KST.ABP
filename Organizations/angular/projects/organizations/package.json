@@ -1,0 +1,8 @@
+{
+  "name": "organizations",
+  "version": "0.0.1",
+  "dependencies": {
+    "@abp/ng.theme.shared": "^2.0.0",
+    "organizations.config": "^0.0.1"
+  }
+}
