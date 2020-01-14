@@ -1,4 +1,4 @@
-. ".\common.ps1"
+. ".\common.ps1";
 # Rebuild all solutions
 foreach($solution in $solutions) {
 	$solutionFolder = Join-Path $rootFolder $solution
@@ -14,17 +14,17 @@ foreach($project in $projects) {
 	# Create nuget pack
 	Set-Location $projectFolder
 	Remove-Item -Recurse (Join-Path $projectFolder "bin/Release")
-	& dotnet msbuild /t:pack /p:Configuration=Release /p:SourceLinkCreate=true
+	& dotnet msbuild /t:Publish /p:Configuration=Release /p:SourceLinkCreate=false
 
 	if (-Not $?) {
 		Write-Host ("Packaging failed for the project: " + $projectFolder)
 		exit $LASTEXITCODE
 	}
-		
+	
 	# Copy nuget package
-	$projectName = $project.Substring($project.LastIndexOf("/") + 1)
-	$projectPackPath = Join-Path $projectFolder ("/bin/Release/" + $projectName + ".*.nupkg")
-	Move-Item $projectPackPath $packFolder
+	$projectName = $project.Substring($project.LastIndexOf("/") + 1);
+	$projectPackPath = Join-Path $projectFolder ("/bin/Release/" + $projectName + ".*.nupkg");
+	Move-Item $projectPackPath $packFolder;
 
 }
 
