@@ -132,10 +132,10 @@ namespace KST.ABP.Organizations
                 });
             });
 
-            Configure<AbpAspNetCoreMvcOptions>(options =>
-            {
-                options.ConventionalControllers.Create(typeof(OrganizationsApplicationModule).Assembly);
-            });
+            //Configure<AbpAspNetCoreMvcOptions>(options =>
+            //{
+            //    options.ConventionalControllers.Create(typeof(OrganizationsApplicationModule).Assembly);
+            //});
 
         }
 

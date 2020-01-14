@@ -11,20 +11,20 @@ namespace KST.ABP.Organizations
 {
     public interface IOrganizationUnitAppService : IApplicationService
     {
-        Task<ListResultDto<OrganizationUnitDto>> GetOrganizationUnits();
+        Task<ListResultDto<OrganizationUnitDto>> GetOrganizationUnitsAsync();
 
-        Task<OrganizationUnitDto> CreateOrganizationUnit(CreateOrganizationUnitInput input);
+        Task<OrganizationUnitDto> CreateOrganizationUnitAsync(CreateOrganizationUnitInput input);
 
-        Task<OrganizationUnitDto> UpdateOrganizationUnit(UpdateOrganizationUnitInput input);
+        Task<OrganizationUnitDto> UpdateOrganizationUnitAsync(UpdateOrganizationUnitInput input);
 
-        Task<OrganizationUnitDto> MoveOrganizationUnit(MoveOrganizationUnitInput input);
+        Task<OrganizationUnitDto> MoveOrganizationUnitAsync(MoveOrganizationUnitInput input);
 
-        Task DeleteOrganizationUnit(Guid id);
+        Task DeleteOrganizationUnitAsync(Guid id);
 
-        Task RemoveUserFromOrganizationUnit(UserToOrganizationUnitInput input);
+        Task RemoveUserFromOrganizationUnitAsync(UserToOrganizationUnitInput input);
 
-        Task AddUsersToOrganizationUnit(UsersToOrganizationUnitInput input);
+        Task AddUsersToOrganizationUnitAsync(UsersToOrganizationUnitInput input);
 
-        Task<PagedResultDto<Guid>> FindUsers(FindOrganizationUnitUsersInput input);
+        Task<PagedResultDto<Guid>> FindUsersAsync(FindOrganizationUnitUsersInput input);
     }
 }
