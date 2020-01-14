@@ -4,7 +4,8 @@ $rootFolder = Join-Path $packFolder "../"
 
 # List of solutions
 $solutions = (
-    "Organizations"
+    "Organizations",
+	"ABPExtension"
 )
 
 # List of projects
@@ -19,6 +20,8 @@ $projects = (
 	"Organizations/src/KST.ABP.Organizations.HttpApi",
 	"Organizations/src/KST.ABP.Organizations.HttpApi.Client",
 	"Organizations/src/KST.ABP.Organizations.MongoDB",
-	"Organizations/src/KST.ABP.Organizations.Web"
-    
+	"Organizations/src/KST.ABP.Organizations.Web",
+	
+    # ABPExtension
+	"ABPExtension/KST.ABP.SignalR"
 )
