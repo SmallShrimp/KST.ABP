@@ -18,20 +18,6 @@
     "lib": [
       "es2018",
       "dom"
-    ],
-    "paths": {
-      "organizations": [
-        "dist/organizations"
-      ],
-      "organizations/*": [
-        "dist/organizations/*"
-      ],
-      "organizations-config": [
-        "dist/organizations-config"
-      ],
-      "organizations-config/*": [
-        "dist/organizations-config/*"
-      ]
-    }
+    ]
   }
 }

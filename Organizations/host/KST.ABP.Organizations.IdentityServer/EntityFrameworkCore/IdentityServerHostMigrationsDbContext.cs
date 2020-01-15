@@ -27,6 +27,10 @@ namespace KST.ABP.Organizations.EntityFrameworkCore
             modelBuilder.ConfigureIdentity();
             modelBuilder.ConfigureIdentityServer();
             modelBuilder.ConfigureTenantManagement();
+            modelBuilder.ConfigureOrganizations(options =>
+            {
+                options.TablePrefix = "Kst";
+            });
         }
     }
 }

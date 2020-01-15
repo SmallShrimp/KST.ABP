@@ -2,14 +2,14 @@ export const environment = {
   production: true,
   hmr: false,
   application: {
-    name: 'Organizations',
+    name: 'organizationsApp',
     logoUrl: '',
   },
   oAuthConfig: {
     issuer: 'https://localhost:44309',
-    clientId: 'Organizations_ConsoleTestApp',
+    clientId: 'organizations_App',
     dummyClientSecret: '1q2w3e*',
-    scope: 'Organizations',
+    scope: 'organizationsApp',
     showDebugInformation: true,
     oidc: false,
     requireHttps: true,
@@ -20,6 +20,6 @@ export const environment = {
     },
   },
   localization: {
-    defaultResourceName: 'Organizations',
+    defaultResourceName: 'organizationsApp',
   },
 };

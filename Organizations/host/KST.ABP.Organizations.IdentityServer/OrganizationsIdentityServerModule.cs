@@ -41,6 +41,7 @@ using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.Threading;
 using Volo.Abp.UI.Navigation.Urls;
+using KST.ABP.Organizations.EntityFrameworkCore;
 
 namespace KST.ABP.Organizations
 {
@@ -68,7 +69,8 @@ namespace KST.ABP.Organizations
         typeof(AbpTenantManagementHttpApiModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(OrganizationsApplicationContractsModule),
-        typeof(AbpAspNetCoreSerilogModule)
+        typeof(AbpAspNetCoreSerilogModule),
+        typeof(OrganizationsEntityFrameworkCoreModule)
         )]
     public class OrganizationsIdentityServerModule : AbpModule
     {

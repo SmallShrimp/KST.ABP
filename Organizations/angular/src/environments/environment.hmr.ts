@@ -2,24 +2,24 @@ export const environment = {
   production: false,
   hmr: true,
   application: {
-    name: 'Organizations',
+    name: 'organizationsApp',
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'https://localhost:44309',
-    clientId: 'Organizations_ConsoleTestApp',
+    issuer: 'https://localhost:44317',
+    clientId: 'organizations_App',
     dummyClientSecret: '1q2w3e*',
-    scope: 'Organizations',
+    scope: 'organizationsApp',
     showDebugInformation: true,
     oidc: false,
     requireHttps: true,
   },
   apis: {
     default: {
-      url: 'https://localhost:44347',
+      url: 'https://localhost:44317',
     },
   },
   localization: {
-    defaultResourceName: 'Organizations',
+    defaultResourceName: 'organizationsApp',
   },
 };
