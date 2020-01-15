@@ -1,6 +1,8 @@
 {
   "culture": "zh-Hans",
   "texts": {
+    "OrganizationUnits": "组织单元",
+    "Menu:Organizations": "组织单元管理",
     "Permission:OrganizationUnits": "组织单元",
     "Permission:OrganizationUnits:ManageOrganizationTree": "组织结构管理",
     "Permission:OrganizationUnits:ManageMembers": "组织成员管理",
