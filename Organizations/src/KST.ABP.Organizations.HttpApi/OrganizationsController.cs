@@ -37,7 +37,7 @@ namespace KST.ABP.Organizations
             await _organizationUnitAppService.DeleteOrganizationUnitAsync(id);
         }
 
-        public async Task<PagedResultDto<Guid>> FindUsersAsync(FindOrganizationUnitUsersInput input)
+        public async Task<PagedResultDto<OrganizationUnitUserListDto>> FindUsersAsync(FindOrganizationUnitUsersInput input)
         {
             return await _organizationUnitAppService.FindUsersAsync(input);
         }

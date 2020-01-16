@@ -11,6 +11,8 @@ using System.Linq;
 using Volo.Abp.Linq;
 using KST.ABP.Organizations.Authorization;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Uow;
+using KST.ABP.Organizations.User;
 
 namespace KST.ABP.Organizations
 {
@@ -21,16 +23,19 @@ namespace KST.ABP.Organizations
         private readonly OrganizationUnitManager _organizationUnitManager;
         private readonly IRepository<OrganizationUnit, Guid> _organizationUnitRepository;
         private readonly IRepository<UserOrganizationUnit, Guid> _userOrganizationUnitRepository;
+        private readonly IRepository<OrganizationUnitUser, Guid> _organizationUnitUsers;
         private IAsyncQueryableExecuter AsyncQueryableExecuter { get; set; }
 
         public OrganizationUnitAppService(
             OrganizationUnitManager organizationUnitManager,
             IRepository<OrganizationUnit, Guid> organizationUnitRepository,
-            IRepository<UserOrganizationUnit, Guid> userOrganizationUnitRepository)
+            IRepository<UserOrganizationUnit, Guid> userOrganizationUnitRepository,
+            IRepository<OrganizationUnitUser, Guid> organizationUnitUsers)
         {
             _organizationUnitManager = organizationUnitManager;
             _organizationUnitRepository = organizationUnitRepository;
             _userOrganizationUnitRepository = userOrganizationUnitRepository;
+            _organizationUnitUsers = organizationUnitUsers;
             AsyncQueryableExecuter = DefaultAsyncQueryableExecuter.Instance;
         }
 
@@ -58,7 +63,7 @@ namespace KST.ABP.Organizations
         [Authorize(OrganizationsPermissions.ManageOrganizationTree)]
         public virtual async Task<OrganizationUnitDto> CreateOrganizationUnitAsync(CreateOrganizationUnitInput input)
         {
-            var organizationUnit = new OrganizationUnit(CurrentTenant.Id, input.DisplayName, input.ParentId);
+            var organizationUnit = new OrganizationUnit(GuidGenerator.Create(), CurrentTenant.Id, input.DisplayName, input.ParentId);
             organizationUnit.CreatorId = CurrentUser.Id;
             await _organizationUnitManager.CreateAsync(organizationUnit);
             await CurrentUnitOfWork.SaveChangesAsync();
@@ -94,38 +99,40 @@ namespace KST.ABP.Organizations
             await _organizationUnitManager.DeleteAsync(id);
         }
 
-
+        [UnitOfWork]
         [Authorize(OrganizationsPermissions.ManageMembers)]
         public virtual async Task RemoveUserFromOrganizationUnitAsync(UserToOrganizationUnitInput input)
         {
             await _userOrganizationUnitRepository.DeleteAsync(m => m.UserId == input.UserId && m.OrganizationUnitId == input.OrganizationUnitId);
         }
 
+        [UnitOfWork]
         [Authorize(OrganizationsPermissions.ManageMembers)]
         public async Task AddUsersToOrganizationUnitAsync(UsersToOrganizationUnitInput input)
         {
             foreach (var userId in input.UserIds)
             {
-                await _userOrganizationUnitRepository.InsertAsync(new UserOrganizationUnit(CurrentTenant.Id, userId, input.OrganizationUnitId));
+                var entity = new UserOrganizationUnit(GuidGenerator.Create(), CurrentTenant.Id, userId, input.OrganizationUnitId);
+                await _userOrganizationUnitRepository.InsertAsync(entity);
             }
         }
 
         [Authorize(OrganizationsPermissions.ManageMembers)]
-        public virtual async Task<PagedResultDto<Guid>> FindUsersAsync(FindOrganizationUnitUsersInput input)
+        public virtual async Task<PagedResultDto<OrganizationUnitUserListDto>> FindUsersAsync(FindOrganizationUnitUsersInput input)
         {
             var userIdsInOrganizationUnit = _userOrganizationUnitRepository.AsQueryable()
                 .Where(uou => uou.OrganizationUnitId == input.OrganizationUnitId)
                 .Select(uou => uou.UserId);
 
-
-
             var userCount = await AsyncQueryableExecuter.CountAsync(userIdsInOrganizationUnit);
             var users = await AsyncQueryableExecuter
                 .ToListAsync(userIdsInOrganizationUnit.PageBy(input));
 
-            return new PagedResultDto<Guid>(
+            var userList = _organizationUnitUsers.Where(u => users.Contains(u.Id))
+                .ToList();
+            return new PagedResultDto<OrganizationUnitUserListDto>(
                 userCount,
-                users
+                ObjectMapper.Map<List<OrganizationUnitUser>, List<OrganizationUnitUserListDto>>(userList)
             );
         }
 

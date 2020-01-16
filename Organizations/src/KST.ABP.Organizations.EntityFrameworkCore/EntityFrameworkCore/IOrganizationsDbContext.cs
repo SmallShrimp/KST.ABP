@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KST.ABP.Organizations.User;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -13,5 +14,7 @@ namespace KST.ABP.Organizations.EntityFrameworkCore
         DbSet<OrganizationUnit> OrganizationUnits { get; }
         DbSet<UserOrganizationUnit> UserOrganizationUnits { get; }
         DbSet<OrganizationUnitRole> OrganizationUnitRoles { get; }
+
+        DbSet<OrganizationUnitUser> Users { get; }
     }
 }

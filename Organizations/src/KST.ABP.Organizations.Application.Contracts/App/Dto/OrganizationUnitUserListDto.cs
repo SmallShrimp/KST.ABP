@@ -13,8 +13,10 @@ namespace KST.ABP.Organizations.Dto
 
         public string UserName { get; set; }
 
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
 
-        public DateTime AddedTime { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public DateTime AddTime { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace KST.ABP.Organizations
 {
     public class UserOrganizationUnit : CreationAuditedEntity<Guid>, IMultiTenant, ISoftDelete
     {
-        
+
         public virtual Guid? TenantId { get; set; }
 
         public virtual Guid OrganizationUnitId { get; set; }
@@ -18,13 +18,15 @@ namespace KST.ABP.Organizations
 
         public virtual bool IsDeleted { get; set; }
 
-        public UserOrganizationUnit()
+        public UserOrganizationUnit(Guid id) : base(id)
         {
 
         }
 
-        public UserOrganizationUnit(Guid? tenantId, Guid userId, Guid organizationUnitId)
+        public UserOrganizationUnit(Guid id, Guid? tenantId, Guid userId, Guid organizationUnitId)
+            : base(id)
         {
+
             TenantId = tenantId;
             UserId = userId;
             OrganizationUnitId = organizationUnitId;

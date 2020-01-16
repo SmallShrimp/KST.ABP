@@ -28,6 +28,15 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.Security.Claims;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.Identity;
+using Volo.Abp.TenantManagement;
+using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using Volo.Abp.FeatureManagement;
+using Volo.Abp.PermissionManagement.HttpApi;
+using Volo.Abp.PermissionManagement;
+using Volo.Abp.PermissionManagement.Identity;
+using Volo.Abp.IdentityServer.EntityFrameworkCore;
+using Volo.Abp.Identity.EntityFrameworkCore;
 
 namespace KST.ABP.Organizations
 {
@@ -41,7 +50,20 @@ namespace KST.ABP.Organizations
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
-        typeof(AbpAspNetCoreSerilogModule)
+        typeof(AbpAspNetCoreSerilogModule),
+        typeof(AbpIdentityEntityFrameworkCoreModule),
+        typeof(AbpIdentityApplicationModule),
+        typeof(AbpIdentityHttpApiModule),
+        typeof(AbpIdentityServerEntityFrameworkCoreModule),
+        typeof(AbpPermissionManagementDomainIdentityModule),
+        typeof(AbpPermissionManagementEntityFrameworkCoreModule),
+        typeof(AbpPermissionManagementApplicationModule),
+        typeof(AbpPermissionManagementHttpApiModule),
+        typeof(AbpSettingManagementEntityFrameworkCoreModule),
+        typeof(AbpFeatureManagementApplicationModule),
+        typeof(AbpTenantManagementEntityFrameworkCoreModule),
+        typeof(AbpTenantManagementApplicationModule),
+        typeof(AbpTenantManagementHttpApiModule)
         )]
     public class OrganizationsHttpApiHostModule : AbpModule
     {

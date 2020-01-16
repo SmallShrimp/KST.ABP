@@ -4,8 +4,8 @@ $rootFolder = Join-Path $packFolder "../"
 
 # List of solutions
 $solutions = (
-    "Organizations",
-	"ABPExtension"
+    "Organizations"
+	#"ABPExtension"
 )
 
 # List of projects

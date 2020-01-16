@@ -1,7 +1,9 @@
 ﻿using System;
+using KST.ABP.Organizations.User;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
+using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace KST.ABP.Organizations.EntityFrameworkCore
 {
@@ -19,6 +21,9 @@ namespace KST.ABP.Organizations.EntityFrameworkCore
             );
 
             optionsAction?.Invoke(options);
+
+            
+
             builder.Entity<OrganizationUnit>(b =>
             {
                 b.ToTable(options.TablePrefix + "OrganizationUnit", options.Schema);

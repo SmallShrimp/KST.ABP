@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KST.ABP.Organizations.User;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Modeling;
+using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace KST.ABP.Organizations.EntityFrameworkCore
 {
@@ -15,8 +18,8 @@ namespace KST.ABP.Organizations.EntityFrameworkCore
         public virtual DbSet<UserOrganizationUnit> UserOrganizationUnits { get; set; }
 
         public virtual DbSet<OrganizationUnitRole> OrganizationUnitRoles { get; set; }
-
-        public OrganizationsDbContext(DbContextOptions<OrganizationsDbContext> options) 
+        public virtual DbSet<OrganizationUnitUser> Users { get; set; }
+        public OrganizationsDbContext(DbContextOptions<OrganizationsDbContext> options)
             : base(options)
         {
 
@@ -25,7 +28,12 @@ namespace KST.ABP.Organizations.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
+            builder.Entity<OrganizationUnitUser>(b =>
+            {
+                b.ToTable("AbpUsers"); //Sharing the same table "AbpUsers" with the IdentityUser
+                b.ConfigureByConvention();
+                b.ConfigureAbpUser();
+            });
             builder.ConfigureOrganizations();
         }
     }

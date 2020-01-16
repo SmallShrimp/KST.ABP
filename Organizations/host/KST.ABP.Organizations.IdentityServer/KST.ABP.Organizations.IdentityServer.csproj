@@ -56,6 +56,8 @@
     <Compile Remove="Migrations\20200115060400_add_table_of_organizations.Designer.cs" />
     <Compile Remove="Migrations\20200115060643_add_table_of_organizations.cs" />
     <Compile Remove="Migrations\20200115060643_add_table_of_organizations.Designer.cs" />
+    <Compile Remove="Migrations\20200116052651_add_table_user.cs" />
+    <Compile Remove="Migrations\20200116052651_add_table_user.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using KST.ABP.Organizations.Dto;
+using KST.ABP.Organizations.User;
 
 namespace KST.ABP.Organizations
 {
@@ -12,6 +13,9 @@ namespace KST.ABP.Organizations
              * into multiple profile classes for a better organization. */
             CreateMap<OrganizationUnit, OrganizationUnitDto>(memberList: MemberList.Destination)
                .ForMember(m => m.MemberCount, m => m.Ignore());
+
+            CreateMap<OrganizationUnitUser, OrganizationUnitUserListDto>(MemberList.Destination)
+                .ForMember(m => m.AddTime, m => m.Ignore());
         }
     }
 }

@@ -25,6 +25,6 @@ namespace KST.ABP.Organizations
 
         Task AddUsersToOrganizationUnitAsync(UsersToOrganizationUnitInput input);
 
-        Task<PagedResultDto<Guid>> FindUsersAsync(FindOrganizationUnitUsersInput input);
+        Task<PagedResultDto<OrganizationUnitUserListDto>> FindUsersAsync(FindOrganizationUnitUsersInput input);
     }
 }
