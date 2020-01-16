@@ -93,10 +93,12 @@ namespace KST.ABP.Organizations
                 );
         }
 
+        [UnitOfWork]
         [Authorize(OrganizationsPermissions.ManageOrganizationTree)]
         public virtual async Task DeleteOrganizationUnitAsync(Guid id)
         {
             await _organizationUnitManager.DeleteAsync(id);
+            await _userOrganizationUnitRepository.DeleteAsync(m => m.OrganizationUnitId == id);
         }
 
         [UnitOfWork]
