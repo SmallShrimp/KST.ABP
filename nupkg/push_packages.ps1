@@ -7,7 +7,7 @@ $version = $commonPropsXml.Project.PropertyGroup.Version
 # Publish all packages
 foreach($project in $projects) {
     $projectName = $project.Substring($project.LastIndexOf("/") + 1)
-    & dotnet nuget push ($projectName + "." + $version + ".nupkg") -s https://api.nuget.org/v3/index.json --api-key ""
+    & dotnet nuget push ($projectName + "." + $version + ".nupkg") -s https://api.nuget.org/v3/index.json --api-key "oy2ltezkj4fxubqq6vgqgsnmmiskpsmute4kcqx3bmmnbq"
 }
 
 # Go back to the pack folder
